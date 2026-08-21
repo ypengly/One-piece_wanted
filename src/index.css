@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Wanted Maker design tokens ---- */
+  --color-paper: #ecd9a8;
+  --color-paper-dark: #d9c088;
+  --color-paper-shadow: #b89a5f;
+  --color-ink: #241505;
+  --color-ink-soft: #4a3420;
+  --color-blood: #7a1e1e;
+  --color-blood-dark: #591313;
+  --color-gold: #a97c34;
+  --color-gold-light: #c9a45c;
+  --color-board: #17110a;
+  --color-board-light: #241a10;
+  --color-board-lighter: #352716;
+
+  --font-display: "Rye", serif;
+  --font-name: "Cinzel", serif;
+  --font-stamp: "Special Elite", monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-board);
+  color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-board);
+}
+
+/* Subtle focus ring, kept visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Wood grain background for the app shell */
+.board-texture {
+  background-color: var(--color-board);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.18) 0px,
+      rgba(0,0,0,0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    linear-gradient(180deg, var(--color-board-light) 0%, var(--color-board) 55%, #0f0b06 100%);
+  background-size: 6px 100%, 100% 100%;
+}
+
+.paper-texture {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(ellipse at 15% 20%, rgba(120,90,40,0.10), transparent 45%),
+    radial-gradient(ellipse at 85% 80%, rgba(120,90,40,0.12), transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(80,60,30,0.06), transparent 60%);
+}
+
+.torn-edge-top {
+  mask-image: linear-gradient(to bottom, transparent 0, black 12px);
+}
